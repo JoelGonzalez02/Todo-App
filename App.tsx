@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { FC } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import store from './store/store';
+import { Provider } from 'react-redux';
+import { ConnectedApp } from './screens/Main';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App: FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store()}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Main' screenOptions={{
+          headerShown: false,
+        }}>
+          <Stack.Screen name='Main' component={ConnectedApp} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
