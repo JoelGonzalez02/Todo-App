@@ -5,6 +5,9 @@ Allio-Todo-App>
 <Simple todo app>
 
 The app is built using `Expo-TypeScript-Template`
+  
+## Github Link
+  https://github.com/JoelGonzalez02/Todo-App
 
 ## Available Commands
 
